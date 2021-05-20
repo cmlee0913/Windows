@@ -110,7 +110,14 @@ void CChildView::OnPaint()
 	}
 
 	if (r_click) {
+		CPen pen(0, 3, RGB(255, 100, 0));
+		CBrush brush(RGB(255, 255, 255));
+
+		memDC.SelectObject(&pen);
+		memDC.SelectObject(&brush);
+
 		CRect eraser(erase_start, erase_end);
+
 		memDC.Rectangle(eraser);
 	}
 
