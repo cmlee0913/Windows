@@ -11,6 +11,7 @@
 #define new DEBUG_NEW
 #endif
 
+int CChildView::shapecounter = 0;
 
 // CChildView
 
@@ -22,6 +23,8 @@ CChildView::CChildView()
 	m_bDrawRect = true;
 	l_click = false;
 	r_click = false;
+	m_dx = 0;
+	m_dy = 0;
 }
 
 CChildView::~CChildView()
@@ -49,6 +52,12 @@ BEGIN_MESSAGE_MAP(CChildView, CWnd)
 	ON_UPDATE_COMMAND_UI(ID_BLACK, &CChildView::OnUpdateBlack)
 	ON_WM_RBUTTONDOWN()
 	ON_WM_RBUTTONUP()
+	ON_WM_CREATE()
+//	ON_WM_TIMER()
+//	ON_WM_KEYDOWN()
+ON_WM_CREATE()
+//ON_WM_KEYDOWN()
+//ON_WM_TIMER()
 END_MESSAGE_MAP()
 
 
@@ -88,16 +97,14 @@ void CChildView::OnPaint()
 
 	memDC.PatBlt(0, 0, clientRect.Width(), clientRect.Height(), WHITENESS);
 
-	CString sTxt;
-	sTxt.Format(_T("%d"), shapecounter);
-	TextOut(memDC, 10, 10, sTxt, sTxt.GetLength());
-
 	POSITION pos = s_list.GetHeadPosition();
 
 	while (pos != NULL) {
 		CShape* value = s_list.GetNext(pos);		// pos 위치의 데이터 반환 후, pos는 list의 다음 위치를 가르킴
 		value->Draw(&memDC);
 	}
+
+	eraser_list.drawEraser(&memDC);
 
 	if (l_click && m_bDrawCir) {
 		s_list.AddTail(new CCircle(draw_point, m_color));
@@ -110,16 +117,16 @@ void CChildView::OnPaint()
 	}
 
 	if (r_click) {
-		CPen pen(0, 3, RGB(255, 100, 0));
-		CBrush brush(RGB(255, 255, 255));
-
-		memDC.SelectObject(&pen);
-		memDC.SelectObject(&brush);
-
-		CRect eraser(erase_start, erase_end);
-
-		memDC.Rectangle(eraser);
+		eraser_list = Eraser(erase_start, erase_end);
 	}
+	else if (!r_click) {
+		eraser_list.eraseList(&s_list, m_color);
+
+	}
+	
+	CString sTxt;
+	sTxt.Format(_T("%d"), shapecounter);
+	TextOut(memDC, 10, 10, sTxt, sTxt.GetLength());
 
 	dc.BitBlt(0, 0,
 		clientRect.Width(), clientRect.Height(),
@@ -279,5 +286,7 @@ BOOL CChildView::OnEraseBkgnd(CDC* pDC)
 {
 	return true;
 }
+
+
 
 

@@ -7,10 +7,11 @@
 #include "CCircle.h"
 #include "CRectangle.h"
 #include "CShape.h"
+#include "Eraser.h"
 
 // CChildView 창
 
-class CChildView : public CWnd
+class CChildView : public CWnd , CShape
 {
 // 생성입니다.
 public:
@@ -25,8 +26,10 @@ public:
 	CPoint draw_point;
 	CPoint erase_start, erase_end;
 	CList <CShape*> s_list;
-	int shapecounter = 0;
-
+	Eraser eraser_list;
+	static int shapecounter;
+	int m_dx, m_dy;
+	
 // 작업입니다.
 public:
 

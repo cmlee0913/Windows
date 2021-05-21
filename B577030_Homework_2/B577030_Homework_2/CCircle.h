@@ -4,8 +4,6 @@
 class CCircle : public CShape
 {
 public:
-	CPoint d_point;
-	COLORREF m_color;
 	virtual void Draw(CDC* memDC);
 
 public:

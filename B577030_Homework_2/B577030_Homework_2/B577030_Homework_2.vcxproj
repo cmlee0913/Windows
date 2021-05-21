@@ -188,6 +188,7 @@
     <ClInclude Include="ChildView.h" />
     <ClInclude Include="CRectangle.h" />
     <ClInclude Include="CShape.h" />
+    <ClInclude Include="Eraser.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="pch.h" />
@@ -200,6 +201,7 @@
     <ClCompile Include="ChildView.cpp" />
     <ClCompile Include="CRectangle.cpp" />
     <ClCompile Include="CShape.cpp" />
+    <ClCompile Include="Eraser.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
