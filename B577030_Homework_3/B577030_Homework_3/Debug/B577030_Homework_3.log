@@ -1,0 +1,5 @@
+﻿  ChildView.cpp
+C:\Users\suras\Desktop\개발\Windows Programming\B577030_Homework_3\B577030_Homework_3\ChildView.cpp(261,17): warning C4101: 'oldpen' :참조되지 않은 지역 변수입니다.
+C:\Users\suras\Desktop\개발\Windows Programming\B577030_Homework_3\B577030_Homework_3\ChildView.cpp(315,65): warning C4244: '+=': 'double'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\suras\Desktop\개발\Windows Programming\B577030_Homework_3\B577030_Homework_3\ChildView.cpp(316,65): warning C4244: '+=': 'double'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  B577030_Homework_3.vcxproj -> C:\Users\suras\Desktop\개발\Windows Programming\B577030_Homework_3\Debug\B577030_Homework_3.exe
